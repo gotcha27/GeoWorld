@@ -1,0 +1,33 @@
+{
+  "name": "mon-projet-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "@maptiler/sdk": "^1.2.1",
+    "@maptiler/weather": "^1.1.2",
+    "@mdi/font": "^7.4.47",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
+    "leaflet": "^1.9.4",
+    "ol": "^8.2.0",
+    "ol-contextmenu": "^5.5.0",
+    "ol-ext": "^4.0.38",
+    "vue": "^3.5.43",
+    "vue-router": "^4.6.4",
+    "vue3-openlayers": "^4.1.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.4",
+    "cypress": "^16.1.1",
+    "dotenv": "^16.6.1",
+    "vite": "^5.4.21",
+    "vite-plugin-vuetify": "^2.1.3",
+    "vuetify": "^3.13.5"
+  }
+}

@@ -1,0 +1,16 @@
+# Variables sensibles
+.env
+.env.*
+!.env.example
+
+# Dépendances et fichiers générés
+node_modules/
+build/
+dist/
+dist-ssr/
+
+# Fichiers système et éditeurs
+.DS_Store
+.idea/
+.vscode/
+*.log
