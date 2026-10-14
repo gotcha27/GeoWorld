@@ -1,3 +1,4 @@
+
 // Définit les routes HTTP de l'API GeoWorld.
 import { capitalController } from "./controller/capitalController";
 import { continentController } from "./controller/continentController";
@@ -6,11 +7,13 @@ import { difficultyController } from "./controller/difficultyController";
 import { flagController } from "./controller/flagController";
 import { moneyController } from "./controller/moneyController";
 import { questionController } from "./controller/questionController";
+import { quizzController } from "./controller/quizzController";
 import { storyController } from "./controller/storyController";
 import { userController } from "./controller/userController";
 import { TerritoryController } from "./controller/territoryController";
 import { authMiddleware } from "./middleware/authMiddleware";
 import { SearchController } from "./controller/searchController";
+import { categoryController } from "./controller/categoryController";
 
 export const Routes = [
     // Routes utilisateurs
@@ -53,14 +56,13 @@ export const Routes = [
         action: "remove",
         middlewares: [authMiddleware],
     },
-    // Route de renouvellement de l'access token.
+    // Renouvellement et déconnexion
     {
         method: "post",
         route: "/refresh",
         controller: userController,
         action: "refresh",
     },
-    // Route de déconnexion et de révocation du refresh token.
     {
         method: "post",
         route: "/logout",
@@ -188,7 +190,7 @@ export const Routes = [
         action: "save",
     },
 
-    // Routes questions
+    // Routes questions enregistrées
     {
         method: "get",
         route: "/questions",
@@ -200,6 +202,14 @@ export const Routes = [
         route: "/question/:questionId",
         controller: questionController,
         action: "one",
+    },
+
+    // Route de génération des questions du quiz
+    {
+        method: "get",
+        route: "/quiz/questions",
+        controller: quizzController,
+        action: "generate",
     },
 
     // Routes difficultés
@@ -235,11 +245,20 @@ export const Routes = [
         controller: storyController,
         action: "save",
     },
-    // Route de recherche.
-{
-    method: "get",
-    route: "/search",
-    controller: SearchController,
-    action: "search",
-},
+
+    // Route de recherche
+    {
+        method: "get",
+        route: "/search",
+        controller: SearchController,
+        action: "search",
+    },
+
+    // Routes catégories
+    {
+        method: "get",
+        route: "/category",
+        controller: categoryController,
+        action: "all",
+    },
 ];
