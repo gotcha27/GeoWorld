@@ -1,9 +1,10 @@
-<!-- Affiche la structure générale de GeoWorld et la page sélectionnée par le routeur. -->
+
+<!-- Affiche la structure générale de GeoWorld et masque la navbar pendant une partie. -->
 <template>
     <v-app>
-        <NavBar />
+        <NavBar v-if="$route.path !== '/quizz/jeu'" />
         <router-view />
-        <Footer v-if="!['/connexion', '/inscription'].includes($route.path)" />
+        <Footer v-if="!['/connexion', '/inscription', '/quizz/jeu'].includes($route.path)" />
     </v-app>
 </template>
 
@@ -23,3 +24,5 @@ body {
     min-height: 100vh;
 }
 </style>
+
+```

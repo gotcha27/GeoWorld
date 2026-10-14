@@ -1,4 +1,3 @@
-
 /* Affiche la carte, détecte les pays et territoires et gère leur surbrillance. */
 
 import * as maptilersdk from "@maptiler/sdk";
@@ -86,16 +85,20 @@ export function createCountryMap({ onCountryChange, onPositionChange }) {
 
     if (import.meta.env.DEV) window.__geoWorldMap = map;
 
-    map.on("load", () => {
-        mapIsLoaded = true;
-        document.getElementById("map")?.classList.remove("hidden");
-
+    // Masque les couches de texte dès que le style est chargé.
+    map.on("style.load", () => {
         const styleLayers = map.getStyle().layers || [];
+
         styleLayers.forEach((layer) => {
-            if (layer.type === "symbol" || layer.type === "circle") {
+            if (layer.type === "symbol") {
                 map.setLayoutProperty(layer.id, "visibility", "none");
             }
         });
+    });
+
+    map.on("load", () => {
+        mapIsLoaded = true;
+        document.getElementById("map")?.classList.remove("hidden");
 
         map.addSource("countries-data", {
             type: "vector",
